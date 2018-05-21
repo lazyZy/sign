@@ -1,5 +1,7 @@
 package top.mrzhao.entity;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
 /**
@@ -9,6 +11,7 @@ import java.util.Date;
  *
  * @mbg.generated do_not_delete_during_merge
  */
+@Component
 public class User {
     /**
      * Database Column Remarks:
