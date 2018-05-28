@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Login</title>
+    <title>企业新人培训系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
@@ -15,16 +15,28 @@
     <!-- /css files -->
 </head>
 <body>
-<h1>Unique Login Form</h1>
-<div class="log">
+<h1>企业新人培训系统</h1>
+<div id="vm" class="log">
     <div class="content2">
         <h2>Sign Up Form</h2>
         <form>
-            <input type="text" name="userid" value="USERNAME" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'NAME AND SURNAME';}">
-            <input type="tel" name="usrtel" value="PHONE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PHONE';}">
-            <input type="email" name="email" value="EMAIL ADDRESS" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'EMAIL ADDRESS';}">
-            <input type="password" name="psw" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
-            <input type="submit" class="register" value="Register">
+            <input type="text" v-model="register.userAccount" placeholder="登录账号">
+            <input type="password" v-model="register.userPwd" placeholder="密码">
+            <input type="text" v-model="register.userName" placeholder="姓名">
+            <input type="text" v-model="register.userBirthday" placeholder="生日">
+            <input type="date" v-model="register.userBirthday" placeholder="生日">
+            <input type="tel" v-model="register.userPhone" placeholder="手机号">
+            <input type="email" v-model="register.userEmail" placeholder="邮箱">
+            <br>
+            <br>
+            <div>
+                <input v-model="register.userGender" type="radio" value="0"/>女
+                <input v-model="register.userGender" type="radio" value="1"/>男
+            </div>
+            <br>
+            <br>
+            <input type="submit" class="sign-in" value="注册" v-on:click="toRegister">
+            <input type="button" class="reset" value="返回登录" v-on:click="toLogin">
         </form>
     </div>
     <div class="clear"></div>
@@ -33,4 +45,7 @@
 </div>
 
 </body>
+<script src="${request.contextPath}/libs/vue.min.js"></script>
+<script src="${request.contextPath}/libs/axios.js"></script>
+<script src="${request.contextPath}/js/common/register.js"></script>
 </html>

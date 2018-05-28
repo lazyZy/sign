@@ -25,18 +25,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User UserLogin(String userName, String userPwd) {
+        userExample.clear();
         logger.info("正在进行登录验证。。。。。。");
-        userExample.createCriteria().andEmployeeNumberEqualTo(userName).andUserPwdEqualTo(userPwd).andUserStatusGreaterThanOrEqualTo(2);
+        userExample.createCriteria().andEmployeeNumberEqualTo(userName).andUserPwdEqualTo(userPwd).andUserStatusGreaterThanOrEqualTo(1);
         if(userMapper.selectByExample(userExample).size() > 0){
             logger.info("用户登陆成功!");
-            userExample.clear();
             return userMapper.selectByExample(userExample).get(0);
         }
         userExample.clear();
-        userExample.createCriteria().andUserAccountEqualTo(userName).andUserPwdEqualTo(userPwd);
+        userExample.createCriteria().andUserAccountEqualTo(userName).andUserPwdEqualTo(userPwd).andUserStatusGreaterThanOrEqualTo(1);
         if(userMapper.selectByExample(userExample).size() > 0){
             logger.info("用户登陆成功!");
-            userExample.clear();
             return userMapper.selectByExample(userExample).get(0);
         }
         userExample.clear();
@@ -57,13 +56,13 @@ public class UserServiceImpl implements UserService {
         userExample.createCriteria().andEmployeeNumberEqualTo(employeeNumber).andUserStatusNotEqualTo(-1);
         if(null != employeeNumber && userMapper.selectByExample(userExample).size() > 0){
             userExample.clear();
-            return BaseResult.createFail(400,"账户已存在");
+            return BaseResult.createFail(400,"工号已存在");
         }
         userExample.clear();
-        if(user.getUserId() > 0 && userMapper.updateByPrimaryKey(user) > 0){
+        if(null != user.getUserId() && userMapper.updateByPrimaryKey(user) > 0){
             return BaseResult.createOk("个人信息修改成功");
         }
-        if(userMapper.insert(user) > 0){
+        if(userMapper.insertSelective(user) > 0){
             return BaseResult.createOk("个人信息添加成功");
         }
         return BaseResult.createBadRequest();
