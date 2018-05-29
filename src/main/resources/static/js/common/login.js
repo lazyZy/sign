@@ -6,6 +6,9 @@ var vm = new Vue({
             pwd: ""
         }
     },
+    mounted: function () {
+        localStorage.clear();
+    },
     methods: {
         confirm: function () {
             console.log("触发登录按钮");

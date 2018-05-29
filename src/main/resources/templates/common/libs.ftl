@@ -1,3 +1,5 @@
+<title>企业新人培训系统</title>
+
 <!-- Bootstrap Styles-->
 <link href="${request.contextPath}/css/bootstrap.css" rel="stylesheet" />
 <!-- FontAwesome Styles-->
@@ -26,3 +28,6 @@
 
 <!-- Custom Js -->
 <script src="${request.contextPath}/js/custom-scripts.js"></script>
+
+<script src="${request.contextPath}/libs/vue.min.js"></script>
+<script src="${request.contextPath}/libs/axios.js"></script>

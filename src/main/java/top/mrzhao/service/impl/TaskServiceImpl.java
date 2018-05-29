@@ -10,6 +10,7 @@ import top.mrzhao.entity.TaskExample;
 import top.mrzhao.service.TaskService;
 import top.mrzhao.util.BaseResult;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -48,6 +49,16 @@ public class TaskServiceImpl implements TaskService {
         logger.info("开始获取ID为：{}的任务信息",taskId);
         Task task = taskMapper.selectByPrimaryKey(taskId);
         return BaseResult.create(200,task,"获取数据成功");
+    }
+
+    @Override
+    public List<Task> SelectTaskByDepartmentId(Integer departmentId) {
+        List<Integer> in = new ArrayList<>();
+        in.add(0);
+        in.add(departmentId);
+        taskExample.createCriteria().andTaskStatusEqualTo((byte)1).andTaskDepartmentIdIn(in);
+        List<Task> tasks = taskMapper.selectByExample(taskExample);
+        return tasks;
     }
 
     @Override

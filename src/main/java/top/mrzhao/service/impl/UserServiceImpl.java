@@ -46,6 +46,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public BaseResult UserRegister(User user) {
         logger.info("进入用户注册。。。。。。");
+        if(null != user.getUserId() && userMapper.updateByPrimaryKey(user) > 0){
+            return BaseResult.createOk("个人信息修改成功");
+        }
         String userAccount = user.getUserAccount();
         String employeeNumber = user.getEmployeeNumber();
         userExample.createCriteria().andUserAccountEqualTo(userAccount).andUserStatusNotEqualTo(-1);
@@ -59,9 +62,6 @@ public class UserServiceImpl implements UserService {
             return BaseResult.createFail(400,"工号已存在");
         }
         userExample.clear();
-        if(null != user.getUserId() && userMapper.updateByPrimaryKey(user) > 0){
-            return BaseResult.createOk("个人信息修改成功");
-        }
         if(userMapper.insertSelective(user) > 0){
             return BaseResult.createOk("个人信息添加成功");
         }

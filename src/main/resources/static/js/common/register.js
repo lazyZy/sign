@@ -8,7 +8,9 @@ var vm = new Vue({
             userGender: "0",
             userBirthday: "",
             userPhone:"",
-            userEmail:""
+            userEmail:"",
+            userStatus:"",
+            employeeNumber:""
         }
     },
     methods: {

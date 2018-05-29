@@ -244,13 +244,13 @@
                         <a href="index.ftl"><i class="fa fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="ui-elements.ftl"><i class="fa fa-desktop"></i> UI Elements</a>
+                        <a href="member.ftl"><i class="fa fa-desktop"></i> UI Elements</a>
                     </li>
 					<li>
-                        <a href="chart.ftl"><i class="fa fa-bar-chart-o"></i> Charts</a>
+                        <a href="task.ftl"><i class="fa fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="tab-panel.ftl"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
+                        <a href="checkMember.ftl"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
                     </li>
                     
                     <li>
@@ -289,7 +289,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="empty.ftl"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                        <a href="meeting.ftl"><i class="fa fa-fw fa-file"></i> Empty Page</a>
                     </li>
                 </ul>
 

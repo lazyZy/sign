@@ -11,6 +11,7 @@ import top.mrzhao.service.MeetingService;
 import top.mrzhao.service.UserMeetingService;
 import top.mrzhao.util.BaseResult;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +35,14 @@ public class MeetingServiceImpl implements MeetingService{
         List<Meeting> meetings = meetingMapper.selectByExample(meetingExample);
         meetingExample.clear();
         return BaseResult.create(200,meetings,"获取数据成功");
+    }
+
+    @Override
+    public List<Meeting> SelectMeetingByStatusAndTime() {
+        meetingExample.createCriteria().andMeetingStatusEqualTo(1).andMeetingTimeGreaterThanOrEqualTo(new Date(new Date().getTime()+ 600000));
+        List<Meeting> meetings = meetingMapper.selectByExample(meetingExample);
+        meetingExample.clear();
+        return meetings;
     }
 
     @Override

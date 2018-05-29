@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.mrzhao.entity.User;
 import top.mrzhao.pojo.LoginPojo;
+import top.mrzhao.service.DepartmentService;
 import top.mrzhao.service.TokenService;
 import top.mrzhao.service.UserService;
 import top.mrzhao.util.BaseResult;
@@ -21,6 +23,8 @@ public class UserController {
     UserService userService;
     @Autowired
     TokenService tokenService;
+    @Autowired
+    DepartmentService departmentService;
 
     @RequestMapping("/login")
     @ResponseBody
@@ -37,5 +41,17 @@ public class UserController {
     @ResponseBody
     public BaseResult toRegister(@RequestBody User user) {
         return userService.UserRegister(user);
+    }
+
+    @RequestMapping("/getInfoByToken")
+    @ResponseBody
+    public BaseResult getInfoByToken(@RequestParam String token) {
+        return tokenService.GetUserLoginInfo(token);
+    }
+
+    @RequestMapping("/getDepartmentInfoById")
+    @ResponseBody
+    public BaseResult getDepartmentInfoById(@RequestParam Integer departmentId) {
+        return BaseResult.create(200,departmentService.SelectDepartmentById(departmentId),"ok");
     }
 }

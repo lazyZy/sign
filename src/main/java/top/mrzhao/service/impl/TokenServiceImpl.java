@@ -38,7 +38,7 @@ public class TokenServiceImpl implements TokenService{
         if (checkToken(token)) {
             jedisClientPool.expire(token, 60 * 60);
             User user = JSON.parseObject(jedisClientPool.get(token),User.class);
-            BaseResult.createOk(user);
+            return BaseResult.createOk(user);
         }
         return BaseResult.createDataNotFound();
     }

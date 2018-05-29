@@ -29,4 +29,35 @@ public class PageController {
     public String toRegister() {
         return "register";
     }
+
+    @RequestMapping("/info")
+    public String toInfo() {
+        return "info";
+    }
+
+    @RequestMapping("/task")
+    public String toTask() {
+        return "task";
+    }
+
+    @RequestMapping("/meeting")
+    public String toMeeting() {
+        return "meeting";
+    }
+
+    @RequestMapping("/checkMember")
+    public String toCheckMember() {
+        return "checkMember";
+    }
+
+    @RequestMapping("/adminRegister")
+    public String toAdminRegister() {
+        return "adminRegister";
+    }
+
+    @RequestMapping("/member")
+    public String toMember() {
+        return "member";
+    }
+
 }
